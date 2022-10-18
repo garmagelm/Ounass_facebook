@@ -8,10 +8,6 @@ services:
       - .env
     volumes:
       - ./backend:/var/ounass/backend
-      - ./backend/static:/var/ounass/backend/static
-      - ./backend/media:/var/ounass/backend/media
-    networks:
-      - nginx_network
 
   frontend:
     build: ./frontend
@@ -23,27 +19,3 @@ services:
       - "3000:3000"
     depends_on:
       - backend
-    networks:
-      - nginx_network
-
-  nginx:
-    build: ./nginx
-    container_name: nginx
-    ports:
-      - "80:80"
-    volumes:
-      - ./nginx:/etc/nginx/conf.d
-      - ./logs/nginx:/var/ounass/log/nginx
-      - ./backend/static:/var/ounass/backend/static
-      - ./backend/media:/var/ounass/backend/media
-      - ./frontend:/var/ounass/frontend
-    depends_on:
-      - backend
-      - frontend
-
-
-networks:
-  nginx_network:
-    driver: bridge
-  postgresql_network:
-    driver: bridge
