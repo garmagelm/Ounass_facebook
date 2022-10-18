@@ -16,7 +16,6 @@ page_id = 104413048775500
 2. Create a campaign via API
    - The name will be **Conversions Campaign ***[your name here]*****
    - The objective will be ***REACH*** <br>
-   ![Campaign Structure](https://scontent.fadb2-1.fna.fbcdn.net/v/t39.2178-6/851593_516881288424097_1568644600_n.jpg?_nc_cat=101&ccb=1-5&_nc_sid=5ca315&_nc_ohc=t9A3R8EpF9YAX8CY6oy&_nc_ht=scontent.fadb2-1.fna&oh=00_AT-wBXzwJtRkSlqLquryh6AjAOnm0zH9de_bmffPRE4Yeg&oe=61C9D505)
 3. Create an Adset via API
    - The name will be **My First Adset ***[your name here]*****
    - The daily budget will be 2000 USD
@@ -42,5 +41,3 @@ Adset name, daily budget, etc. and preview your ad on the frontend as mentioned 
 ## Task3: Dockerize
 Dockerize your code, and make sure the project will be up and running with an only
 single command.
-* Task 2 is optional but implementing task 2 will be a bonus point and positive impact on
-the offer amount.
