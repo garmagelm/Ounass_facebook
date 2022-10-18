@@ -9,8 +9,9 @@ from utils.mock_datas import (
 from config import settings
 import logging
 
+
 logging.basicConfig(level=logging.WARN)
-app = FastAPI(title='Test-Case Facebook Integration (Ounass)',
+app = FastAPI(title='Ounass Marktech Developer Case study',
               )
 
 
@@ -20,10 +21,10 @@ async def root():
     return response
 
 
-api = FacebookApi(my_app_id=settings.my_app_id,
-                  my_app_secret=settings.my_app_secret,
-                  my_access_token=settings.my_access_token,
-                  ad_account_id=settings.ad_account_id)
+api = FacebookApi(my_app_id='438080767979521',
+                  my_app_secret='ff2002ad9af7137b75aafe9e828571e8',
+                  my_access_token='EAAGObqCO8AEBAKH53CrBZBQ4a9ZCudLR3mmGEyAC8583GxZCPLuFofzuNKagCS25hCZA3zWEo 8rikGjRgCUaQb2xKPJuQGWdbOzTBMztrxBT3I3TWQD3XuHgJVi1uVjML5BNZBnbDasZCdZAnQ2T9Wx fUAqEzLKLlWuuYlWVoZAN7RWeLK6ySrKRsakaG3PcBuAZD', # noqa
+                  ad_account_id='act_3061829570753376')
 
 
 @app.get("/campaign", tags=["Campaign"])
@@ -41,12 +42,12 @@ async def say_hello(name: str = ""):
     return {"message": f"Hello {name}"}
 
 
-@app.get("/addset", tags=["Adset"])
+@app.get("/adset", tags=["Adset"])
 async def get_adsets():
     return api.get_add_sets()
 
 
-@app.post("/addset", tags=["Adset"])
+@app.post("/adset", tags=["Adset"])
 async def add_adsets(ad_set_details: AdsetItem = Body(mock_ad_set)):
     return api.create_add_set(**ad_set_details.dict())
 
