@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 function UserAction() {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [name, setName] = useState('Elmira Zaripova');
+  const [name] = useState('Elmira Zaripova');
 
   const onSend = async () => {
     if (isLoading) {

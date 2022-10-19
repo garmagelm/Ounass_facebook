@@ -1,46 +1,20 @@
 version: '3'
-
 services:
-  backend:
-    build: ./backend
-    container_name: backend
-    env_file:
-      - .env
-    volumes:
-      - ./backend:/var/ounass/backend
-
-    networks:
-      - nginx_network
-
-  frontend:
-    build: ./frontend
-    container_name: frontend
-    command: [ "npm", "start" ]
-    volumes:
-      - ./frontend/:/var/ounass/frontend
-    ports:
-      - "3000:3000"
-    depends_on:
+  # Create frontend container
+  frontend: # Name of our service
+    build: ./frontend # path to dockerfile
+    ports: # Port binding to host from docker container
+      - "3000:3000" # Bind port 3000 of host to 3000 of container
+    container_name: frontend-docker
+    restart: always # What to do if container crashes
+    links:
       - backend
-    networks:
-      - nginx_network
-
-  nginx:
-    build: ./nginx
-    container_name: nginx
+  # Create backend container
+  backend:
+    # Create backend container  
+    build: ./backend
     ports:
       - "80:80"
-    volumes:
-      - ./nginx:/etc/nginx/conf.d
-      - ./logs/nginx:/var/ounass/log/nginx
-      - ./frontend:/var/ounass/frontend
-    depends_on:
-      - backend
-      - frontend
-    networks:
-      - nginx_network
+    container_name: backend-docker
+    restart: always
 
-
-networks:
-  nginx_network:
-    driver: bridge

@@ -19,4 +19,4 @@ RUN pip install --no-cache-dir --upgrade -r requirements.txt
 #RUN chmod +x "/var/ounass/backend/entrypoint.sh"
 #ENTRYPOINT ["/var/ounass/backend/entrypoint.sh"]
 #RUN cd /var/ounass/backend && python manage.py migrate --no-input
-CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "80"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
