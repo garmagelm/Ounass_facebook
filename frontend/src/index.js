@@ -19,8 +19,5 @@ function App() {
   )
 }
 
-const cors = require("cors");
-app.use(cors());
-
 const rootElement = document.getElementById("root")
 render(<App />, rootElement)
