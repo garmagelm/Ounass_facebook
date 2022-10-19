@@ -1,4 +1,3 @@
-# pull official base image
 FROM node:15.8.0-alpine
 
 # set work directory
@@ -9,6 +8,7 @@ WORKDIR /var/ounass/frontend
 COPY ./package.json .
 COPY ./package-lock.json .
 
+RUN npm install -g serve
 RUN npm install
 
 # copy react project

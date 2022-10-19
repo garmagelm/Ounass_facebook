@@ -1,22 +1,46 @@
-version: '3.8'
+version: '3'
 
 services:
-
   backend:
     build: ./backend
-    command: uvicorn app.main:app --root-path /api --proxy-headers --host 0.0.0.0 --port 8000
+    container_name: backend
+    env_file:
+      - .env
+    volumes:
+      - ./backend:/var/ounass/backend
+
+    networks:
+      - nginx_network
 
   frontend:
     build: ./frontend
-    ports:
-      - "8080:80"
+    container_name: frontend
+    command: [ "npm", "start" ]
     volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile
-      - caddy-data:/data
-      - caddy-config:/config
+      - ./frontend/:/var/ounass/frontend
+    ports:
+      - "3000:3000"
     depends_on:
       - backend
+    networks:
+      - nginx_network
 
-volumes:
-  caddy-data:
-  caddy-config:
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - ./logs/nginx:/var/ounass/log/nginx
+      - ./frontend:/var/ounass/frontend
+    depends_on:
+      - backend
+      - frontend
+    networks:
+      - nginx_network
+
+
+networks:
+  nginx_network:
+    driver: bridge
