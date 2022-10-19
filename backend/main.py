@@ -21,10 +21,10 @@ async def root():
     return response
 
 
-api = FacebookApi(my_app_id='438080767979521',
-                  my_app_secret='ff2002ad9af7137b75aafe9e828571e8',
-                  my_access_token='EAAGObqCO8AEBAKH53CrBZBQ4a9ZCudLR3mmGEyAC8583GxZCPLuFofzuNKagCS25hCZA3zWEo 8rikGjRgCUaQb2xKPJuQGWdbOzTBMztrxBT3I3TWQD3XuHgJVi1uVjML5BNZBnbDasZCdZAnQ2T9Wx fUAqEzLKLlWuuYlWVoZAN7RWeLK6ySrKRsakaG3PcBuAZD', # noqa
-                  ad_account_id='act_3061829570753376')
+api = FacebookApi(my_app_id=settings.my_app_id,
+                  my_app_secret=settings.my_app_secret,
+                  my_access_token=settings.my_access_token,
+                  ad_account_id=settings.ad_account_id)
 
 
 @app.get("/campaign", tags=["Campaign"])
@@ -36,6 +36,7 @@ async def get_campaigns():
 async def add_campaign(campaign_details: CampaignItem = Body(mock_campaign)):
     resp = api.create_campaign(**campaign_details.dict())
     return resp
+
 
 @app.get("/hello/{name}")
 async def say_hello(name: str = ""):
@@ -60,7 +61,6 @@ async def get_creative_ads():
 @app.post("/creative_ads", tags=["AdCreative"])
 async def create_creative_ads(creative_ad_details: CreativeAdItem = Body(mock_creative_campaign)): # noqa
     return api.create_creative_ad(**creative_ad_details.dict())
-
 
 
 @app.get("/insight/adset/{ad_set_id}", tags=["Insight API"])

@@ -41,3 +41,14 @@ Adset name, daily budget, etc. and preview your ad on the frontend as mentioned 
 ## Task3: Dockerize
 Dockerize your code, and make sure the project will be up and running with an only
 single command.
+
+## Install Instructions
+Prerequisite: You need to have Docker installed on the system where you'll be running this app. [Get Docker](https://docs.docker.com/install/)
+
+
+1. Using your command line interface, `cd` to the cloned directory containing the docker-compose.yml file.
+2. Build the images and run the containers:
+    ```sh
+    $ docker-compose up -d --build
+    ```
+3. To stop the application, run `docker-compose down`
