@@ -10,7 +10,7 @@ function AdCreativeAction() {
     }
     setIsLoading(true);
 
-    const resp = await fetch(`http://0.0.0.0/creative_ads`);
+    const resp = await fetch(`/creative_ads`);
     const result = await resp.json();
 
     setIsLoading(false)

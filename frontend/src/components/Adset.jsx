@@ -10,7 +10,7 @@ function AdsetAction() {
     }
     setIsLoading(true);
 
-    const resp = await fetch(`http://0.0.0.0/adset`);
+    const resp = await fetch(`/adset`);
     const result = await resp.json();
 
     setIsLoading(false)
