@@ -11,7 +11,7 @@ function UserAction() {
     }
     setIsLoading(true);
 
-    const resp = await fetch(`/hello/${name}`);
+    const resp = await fetch(`http://0.0.0.0/hello/${name}`);
     const result = await resp.json();
 
     setIsLoading(false)
