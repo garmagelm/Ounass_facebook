@@ -12,8 +12,7 @@ import logging
 
 
 logging.basicConfig(level=logging.WARN)
-app = FastAPI(title='Ounass Marktech Developer Case study',
-              )
+app = FastAPI(title='Ounass Marktech Developer Case study')
 
 
 origins = [
