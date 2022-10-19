@@ -10,7 +10,7 @@ function InsightAPIAction() {
     }
     setIsLoading(true);
 
-    const resp = await fetch(`http://localhost:8000//insight/adset/`);
+    const resp = await fetch(`http://0.0.0.0/insight/adset/{ad_set_id}`);
     const result = await resp.json();
 
     setIsLoading(false)

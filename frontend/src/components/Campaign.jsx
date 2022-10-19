@@ -10,7 +10,7 @@ function CampaignAction() {
     }
     setIsLoading(true);
 
-    const resp = await fetch(`http://localhost:8000/campaign/`);
+    const resp = await fetch(`http://0.0.0.0/campaign`);
     const result = await resp.json();
 
     setIsLoading(false)
