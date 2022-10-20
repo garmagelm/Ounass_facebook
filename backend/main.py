@@ -16,11 +16,7 @@ app = FastAPI(title='Ounass Marktech Developer Case study')
 
 
 origins = [
-    "http://localhost.tiangolo.com",
-    "https://localhost.tiangolo.com",
-    "http://localhost",
-    "http://localhost:8080",
-    "http://0.0.0.0",
+    "http://localhost:3000",
 ]
 
 
